@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.0.6/build/pure-min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css"> <!-- Linking external CSS -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+    <script src="js/main.js"></script>
+    
+    <title>Global Unemployment Rate</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h1>Global Unemployment Rate</h1>
+                <h3>Insights into Global Unemployment Data</h3>
+            </div>
+            <div class="card-body">
+                <p>This dashboard provides visual insights into global unemployment rates, visualised through various charts. It highlights trends and disparities across regions, age groups, and genders to offer a comprehensive view of the unemployment challenge.</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Global Map Visualisation</h2>
+                <p class="text-muted text-centre">
+                    <i>This map displays unemployment rates globally for the selected year. Darker shades represent higher unemployment rates, allowing for quick visual comparisons between countries.</i>
+                </p>
+                <div id="map_chart" class="chart-container"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Bubble Plot</h2>
+                <p class="text-muted text-centre">
+                    <i>The bubble plot visualises various regions with corresponding unemployment figures. The size of each bubble represents the unemployment rate, making it easy to identify regions with significant unemployment challenges.</i>
+                </p>
+                
+                <p class="description text-left">
+                    This <b>Bubble Plot</b> provides a visualisation of unemployment rates across different regions. Each bubble represents a region, and the size of the bubble correlates with the region's unemployment rate. Larger bubbles indicate higher unemployment rates, making it easier to identify regions that face more significant unemployment challenges.
+                </p>
+                
+                <p class="description text-left">
+                    <b>Sabah</b> stands out with the largest unemployment rate at <b><i>7.9%</i></b>, making it the region with the most severe unemployment issues. On the other hand, despite having the largest population, <b>Selangor</b> maintains a relatively low unemployment rate of <b><i>2%</i></b>, which is comparable to <b>Perlis</b>, also at <b>2%</b>. Interestingly, <b>Kedah</b> has one of the lowest unemployment rates, standing at <b><i>1.9%</i></b>, highlighting that some regions with fewer people may still achieve lower unemployment rates.
+                </p>
+                
+                <div id="bubble_chart" class="chart-container"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Radial Chart</h2>
+                <p class="text-muted text-centre">
+                    <i>This radial chart showcases the top 10 countries with the highest unemployment rates, segmented by sex. 
+                    The colour-coded segments represent different countries, illustrating the disparities in unemployment rates between males and females.</i>
+                </p>
+                <p class="description">
+                    The <b>Radial Chart</b> provides a clear visualisation of the top 10 countries with the highest unemployment rates. Each segment corresponds to a specific country, with its size representing the unemployment rate for the selected sex. The chart allows users to easily compare unemployment rates between men and women by switching the selection using the dropdown below the chart. 
+                </p>
+                <p class="description">
+                    A key insight from the chart is that both <b><i>males and females</i></b> hold the highest unemployment rates in <b><i>Djibouti</i></b>, underscoring significant gender-neutral economic challenges in the country. The colour-coded segments, explained in the legend, help to quickly identify countries with similar rates.
+                </p>
+                <div id="radial_chart" class="chart-container"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h2>Grouped Bar Chart</h2>
+                <p class="text-muted text-centre">
+                    <i>This chart compares unemployment rates by gender and age group in Malaysia. Each colour represents a different age group, allowing for an analysis of how unemployment affects various demographics.</i>
+                </p>
+                
+                <p class="description text-left">
+                    The <b>Grouped Bar Chart</b> shows unemployment rates in Malaysia across both gender and age groups. The comparison between female and male unemployment across different age ranges highlights how unemployment impacts these demographics.
+                </p>
+                
+                <p class="description text-left">
+                    Over the years, <b><i>female unemployment</i></b> has been consistently higher than male unemployment, particularly among younger age groups (15-24). This may be due to gender disparities in certain industries and societal expectations, such as caregiving responsibilities, which can affect women’s participation in the workforce.
+                </p>
+                
+                <div id="grouped_bar_chart" class="chart-container"></div>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-footer text-centre">
+                <p><b>Visualisation done by Dominic, dataset source here</b> | Global Unemployment Rate Dashboard</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

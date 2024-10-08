@@ -1,0 +1,125 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "background": "transparent",
+  "width": "container",
+  "height": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/unemployment-rate.csv",
+    "format": {
+      "type": "csv"
+    }
+  },
+  "transform": [
+    {
+      "filter": "datum['Unemployment, total (% of total labor force) (modeled ILO estimate)'] != null"
+    },
+    {
+      "filter": {
+        "field": "Entity",
+        "oneOf": ["South Africa", "Djibouti", "Palestine", "Botswana", "Eswatini"]
+      }
+    },
+    {
+      "filter": {
+        "field": "Year",
+        "range": [2018, 2022]
+      }
+    },
+    {
+      "sort": [
+        { "field": "Unemployment, total (% of total labor force) (modeled ILO estimate)", "order": "descending" }
+      ],
+      "window": [
+        { "op": "dense_rank", "as": "rank" }
+      ],
+      "groupby": ["Year"]
+    },
+    {
+      "lookup": "Entity",
+      "from": {
+        "data": {
+          "values": [
+            {"Entity": "South Africa", "ImageURL": "https://hatscripts.github.io/circle-flags/flags/za.svg"},
+            {"Entity": "Djibouti", "ImageURL": "https://hatscripts.github.io/circle-flags/flags/dj.svg"},
+            {"Entity": "Palestine", "ImageURL": "https://hatscripts.github.io/circle-flags/flags/ps.svg"},
+            {"Entity": "Botswana", "ImageURL": "https://hatscripts.github.io/circle-flags/flags/bw.svg"},
+            {"Entity": "Eswatini", "ImageURL": "https://hatscripts.github.io/circle-flags/flags/sz.svg"}
+          ]
+        },
+        "key": "Entity",
+        "fields": ["ImageURL"]
+      }
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Year",
+      "type": "ordinal",
+      "axis": {
+        "grid": true,
+        "domain": false,
+        "ticks": false,
+        "labelAngle": 0,
+        "offset": 20  
+      }
+    },
+    "y": {
+      "field": "rank",
+      "type": "quantitative",
+      "sort": "descending",
+      "scale": { "domainMin": 1, "domainMax": 5 },
+      "axis": {
+        "grid": false,
+        "domain": false,
+        "ticks": false,
+        "title": "Rank"
+      }
+    },
+    "tooltip": [
+      { "field": "Entity", "type": "nominal", "title": "Country" },
+      {
+        "field": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
+        "type": "quantitative",
+        "title": "Unemployment Rate (%)"
+      },
+      { "field": "rank", "type": "quantitative", "title": "Rank" }
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "line",
+        "size": 5,
+        "point": {
+          "filled": false,
+          "fill": "white",
+          "size": 80,
+          "strokeWidth": 4
+        }
+      },
+      "encoding": {
+        "color": {
+          "field": "Entity",
+          "legend": {
+            "orient": "bottom",
+            "columns": 3
+          }
+        },
+        "opacity": {
+          "value": 0.8
+        }
+      }
+    },
+    {
+      "mark": { "type": "image", "width": 40, "height": 20, "tooltip": true },
+      "encoding": { "url": { "field": "ImageURL", "type": "nominal" } }
+    }
+  ],
+  "config": {
+    "style": {
+      "cell": {
+        "stroke": "transparent"
+      }
+    }
+  }
+}

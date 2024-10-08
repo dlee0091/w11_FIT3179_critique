@@ -1,0 +1,60 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Unemployment Rate by Gender and Age Group in Malaysia",
+  "data": {
+    "url": "https://raw.githubusercontent.com/dlee0091/wk9_FIT3179_homework/refs/heads/main/data/wrangled_global_unemployment_data.csv"
+  },
+  "width": 600,
+  "height": 300,
+  "params": [
+    {
+      "name": "Year",
+      "value": 2023,
+      "bind": {
+        "input": "range",
+        "min": 2014,
+        "max": 2023,
+        "step": 1,
+        "name": "Select Year: "
+      }
+    }
+  ],
+  "transform": [
+    {
+      "filter": "datum['country_name'] == 'Malaysia'"
+    },
+    {
+      "filter": "datum[Year] != null"
+    },
+    {
+      "calculate": "datum[Year]",
+      "as": "unemployment_rate"
+    }
+  ],
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "sex",
+      "type": "nominal",
+      "axis": {"title": "Gender"}
+    },
+    "y": {
+      "field": "unemployment_rate",
+      "type": "quantitative",
+      "axis": {"title": "Unemployment Rate (%)"}
+    },
+    "xOffset": {
+      "field": "age_group"
+    },
+    "color": {
+      "field": "age_group",
+      "type": "nominal",
+      "legend": {"title": "Age Group"}
+    },
+    "tooltip": [
+      {"field": "sex", "title": "Gender"},
+      {"field": "age_group", "title": "Age Group"},
+      {"field": "unemployment_rate", "title": "Unemployment Rate (%)", "format": ".2f"}
+    ]
+  }
+}

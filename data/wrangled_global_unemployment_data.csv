@@ -1055,12 +1055,12 @@ Uganda,Unemployment rate by sex and age,Female,Under 15,Children,2.991,3.329,3.6
 Uganda,Unemployment rate by sex and age,Male,15-24,Youth,2.96,3.707,4.436,5.312,4.799,4.266,4.759,3.951,3.498,3.486,3.526
 Uganda,Unemployment rate by sex and age,Male,25+,Adults,1.37,1.568,1.761,2.068,1.956,1.831,2.595,2.368,1.895,1.809,1.753
 Uganda,Unemployment rate by sex and age,Male,Under 15,Children,1.897,2.281,2.656,3.153,2.889,2.612,3.282,2.862,2.385,2.316,2.284
-Ukraine,Unemployment rate by sex and age,Female,15-24,Youth,22.811,22.116,21.759,16.976,19.305,15.365,18.539,20.412,,,
-Ukraine,Unemployment rate by sex and age,Female,25+,Adults,6.292,6.99,6.669,7.069,6.615,7.345,8.508,9.519,,,
-Ukraine,Unemployment rate by sex and age,Female,Under 15,Children,7.568,8.105,7.729,7.735,7.442,7.856,9.077,10.143,,,
-Ukraine,Unemployment rate by sex and age,Male,15-24,Youth,24.177,22.94,24.103,20.388,16.926,15.486,19.9,18.085,,,
-Ukraine,Unemployment rate by sex and age,Male,25+,Adults,9.524,8.843,9.617,10.301,9.442,7.882,9.073,8.933,,,
-Ukraine,Unemployment rate by sex and age,Male,Under 15,Children,10.92,10.131,10.885,11.151,10.056,8.496,9.848,9.543,,,
+Ukraine,Unemployment rate by sex and age,Female,15-24,Youth,22.811,22.116,21.759,16.976,19.305,15.365,18.539,20.412,0,0,0
+Ukraine,Unemployment rate by sex and age,Female,25+,Adults,6.292,6.99,6.669,7.069,6.615,7.345,8.508,9.519,0,0,0
+Ukraine,Unemployment rate by sex and age,Female,Under 15,Children,7.568,8.105,7.729,7.735,7.442,7.856,9.077,10.143,0,0,0
+Ukraine,Unemployment rate by sex and age,Male,15-24,Youth,24.177,22.94,24.103,20.388,16.926,15.486,19.9,18.085,0,0,0
+Ukraine,Unemployment rate by sex and age,Male,25+,Adults,9.524,8.843,9.617,10.301,9.442,7.882,9.073,8.933,0,0,0
+Ukraine,Unemployment rate by sex and age,Male,Under 15,Children,10.92,10.131,10.885,11.151,10.056,8.496,9.848,9.543,0,0,0
 United Arab Emirates,Unemployment rate by sex and age,Female,15-24,Youth,9.463,9.125,8.794,15.614,14.123,17.018,18.9,20.495,18.348,18.571,18.435
 United Arab Emirates,Unemployment rate by sex and age,Female,25+,Adults,3.954,3.757,3.582,6.47,5.207,4.986,4.833,5.698,5.204,5.43,5.56
 United Arab Emirates,Unemployment rate by sex and age,Female,Under 15,Children,4.851,4.534,4.251,7.579,6.257,5.99,5.818,6.796,6.159,6.458,6.645

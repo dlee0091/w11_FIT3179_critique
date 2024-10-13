@@ -4,7 +4,7 @@
   "width": "container",
   "height": 300,
   "data": {
-    "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/unemployment-rate.csv",
+    "url": "https://raw.githubusercontent.com/dlee0091/wk9_FIT3179_homework/refs/heads/main/data/wrangled_global_unemployment_data.csv",
     "format": {
       "type": "csv"
     }
@@ -60,19 +60,20 @@
         "domain": false,
         "ticks": false,
         "labelAngle": 0,
-        "offset": 20  
+        "offset": 20
       }
     },
     "y": {
       "field": "rank",
       "type": "quantitative",
       "sort": "descending",
-      "scale": { "domainMin": 1, "domainMax": 5 },
+      "scale": { "domainMin": 1 },
       "axis": {
         "grid": false,
         "domain": false,
         "ticks": false,
-        "title": "Rank"
+        "title": "Rank",
+        "offset": -10
       }
     },
     "tooltip": [

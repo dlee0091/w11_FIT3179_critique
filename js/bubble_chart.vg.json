@@ -1,182 +1,142 @@
 {
-    "$schema": "https://vega.github.io/schema/vega/v5.json",
-    "width": 1000,
-    "height": 500,
-    "padding": {
-      "left": 5,
-      "right": 5,
-      "top": 20,
-      "bottom": 0
+  "$schema": "https://vega.github.io/schema/vega/v5.json",
+  "width": 800,
+  "height": 800,
+  "background": "#f8f9fa",
+  "padding": {"left": 5, "right": 5, "top": 20, "bottom": 0},
+  "autosize": "none",
+  "signals": [
+    {"name": "cx", "update": "width / 2"},
+    {"name": "cy", "update": "height / 2"},
+    {
+      "name": "gravityX",
+      "value": 0.05,
+      "bind": {"input": "range", "min": 0, "max": 0.2, "step": 0.01}
     },
-    "autosize": "none",
-    "signals": [
-      {
-        "name": "cx",
-        "update": "width / 2"
-      },
-      {
-        "name": "cy",
-        "update": "height / 2"
-      },
-      {
-        "name": "gravityX",
-        "value": 0.2,
-        "bind": {
-          "input": "range",
-          "min": 0,
-          "max": 1
+    {
+      "name": "gravityY",
+      "value": 0.05,
+      "bind": {"input": "range", "min": 0, "max": 0.2, "step": 0.01}
+    },
+    {
+      "name": "importanceThreshold",
+      "value": 5,
+      "bind": {"input": "range", "min": 0, "max": 10, "step": 0.5}
+    },
+    {
+      "name": "restart",
+      "update": "importanceThreshold"
+    }
+  ],
+  "data": [
+    {
+      "name": "table",
+      "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/2023_malaysia_lfs_qtr_state.csv",
+      "format": {"type": "csv"},
+      "transform": [
+        {
+          "type": "formula",
+          "as": "isImportant",
+          "expr": "datum.u_rate > importanceThreshold"
         }
-      },
-      {
-        "name": "gravityY",
-        "value": 0.92,
-        "bind": {
-          "input": "range",
-          "min": 0,
-          "max": 1
-        }
-      }
-    ],
-    "data": [
-      {
-        "name": "table",
-        "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/2023_malaysia_lfs_qtr_state.csv", 
-        "format": {
-          "type": "csv"
-        }
-      }
-    ],
-    "scales": [
-      {
-        "name": "size",
-        "domain": {
-          "data": "table",
-          "field": "u_rate"  
+      ]
+    }
+  ],
+  "scales": [
+    {
+      "name": "size",
+      "domain": {"data": "table", "field": "u_rate"},
+      "range": [500, 20000]
+    },
+    {
+      "name": "color",
+      "type": "ordinal",
+      "domain": [true, false],
+      "range": ["#e41a1c", "#377eb8"]
+    }
+  ],
+  "marks": [
+    {
+      "name": "nodes",
+      "type": "symbol",
+      "from": {"data": "table"},
+      "encode": {
+        "enter": {
+          "xfocus": {"signal": "cx"},
+          "yfocus": {"signal": "cy"}
         },
-        "range": [100, 5000]
-      },
-      {
-        "name": "color",
-        "type": "ordinal",
-        "domain": {
-          "data": "table",
-          "field": "state"  
-        },
-        "range": "ramp"
-      }
-    ],
-    "marks": [
-      {
-        "name": "nodes",
-        "type": "symbol",
-        "from": {
-          "data": "table"
-        },
-        "encode": {
-          "enter": {
-            "fill": {
-              "scale": "color",
-              "field": "state"  
-            },
-            "xfocus": {
-              "signal": "cx"
-            },
-            "yfocus": {
-              "signal": "cy"
-            }
-          },
-          "update": {
-            "size": {
-              "signal": "pow(datum.u_rate, 1.5)",  
-              "scale": "size"
-            },
-            "stroke": {
-              "value": "white"
-            },
-            "strokeWidth": {
-              "value": 1
-            },
-            "tooltip": {
-              "signal": "{'State': datum.state, 'Labor Force': datum.lf, 'Employed Persons': datum.lf_employed, 'Unemployed Persons': datum.lf_unemployed, 'Outside Labor Force': datum.lf_outside, 'Participation Rate (%)': datum.p_rate, 'Unemployment Rate (%)': datum.u_rate}"
-            }
+        "update": {
+          "size": {"signal": "scale('size', datum.u_rate)"},
+          "fill": {"scale": "color", "field": "isImportant"},
+          "stroke": {"value": "white"},
+          "strokeWidth": {"value": 1},
+          "tooltip": {
+            "signal": "{'State': datum.state, 'Labor Force': datum.lf, 'Employed': datum.lf_employed, 'Unemployed': datum.lf_unemployed, 'Unemployment Rate (%)': format(datum.u_rate, '.2f'), 'Above Threshold': datum.isImportant ? 'Yes' : 'No'}"
           }
         },
-        "transform": [
-          {
-            "type": "force",
-            "iterations": 100,
-            "static": false,
-            "forces": [
-              {
-                "force": "collide",
-                "iterations": 2,
-                "radius": {
-                  "expr": "sqrt(datum.size) / 2"
-                }
-              },
-              {
-                "force": "center",
-                "x": {
-                  "signal": "cx"
-                },
-                "y": {
-                  "signal": "cy"
-                }
-              },
-              {
-                "force": "x",
-                "x": "xfocus",
-                "strength": {
-                  "signal": "gravityX"
-                }
-              },
-              {
-                "force": "y",
-                "y": "yfocus",
-                "strength": {
-                  "signal": "gravityY"
-                }
-              }
-            ]
-          }
-        ]
+        "hover": {
+          "strokeWidth": {"value": 2},
+          "stroke": {"value": "black"}
+        }
       },
-      {
-        "type": "text",
-        "from": {
-          "data": "nodes"
+      "transform": [
+        {
+          "type": "force",
+          "iterations": 300,
+          "restart": {"signal": "restart"},
+          "static": false,
+          "forces": [
+            {
+              "force": "collide",
+              "iterations": 5,
+              "radius": {"expr": "sqrt(datum.size) / 2"}
+            },
+            {"force": "center", "x": {"signal": "cx"}, "y": {"signal": "cy"}},
+            {"force": "x", "x": "xfocus", "strength": {"signal": "gravityX"}},
+            {"force": "y", "y": "yfocus", "strength": {"signal": "gravityY"}}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "from": {"data": "nodes"},
+      "encode": {
+        "enter": {
+          "align": {"value": "center"},
+          "baseline": {"value": "middle"},
+          "fontWeight": {"value": "bold"},
+          "fill": {"value": "black"},
+          "text": {"field": "datum.state"}
         },
-        "encode": {
-          "enter": {
-            "align": {
-              "value": "center"
-            },
-            "baseline": {
-              "value": "middle"
-            },
-            "fontSize": {
-              "value": 7 
-            },
-            "fontWeight": {
-              "value": "bold"
-            },
-            "fill": {
-              "value": "white"
-            },
-            "text": {
-              "field": "datum.state" 
-            }
-          },
-          "update": {
-            "x": {
-              "field": "x"
-            },
-            "y": {
-              "field": "y"
-            }
+        "update": {
+          "x": {"field": "x"},
+          "y": {"field": "y"},
+          "fontSize": {
+            "signal": "max(sqrt(scale('size', datum.u_rate)) / 3, 10)"
           }
         }
       }
-    ]
+    }
+  ],
+  "legends": [
+    {
+      "fill": "color",
+      "title": "States with Unemployment Rate Above Threshold (%)",
+      "orient": "top-left",
+      "labelFontSize": 14,
+      "symbolSize": 150,
+      "titleFontSize": 16,
+      "encode": {
+        "symbols": {"enter": {"fillOpacity": {"value": 1}}}
+      }
+    }
+  ],
+  "title": {
+    "text": "States by Unemployment Rate",
+    "fontSize": 24,
+    "fontWeight": "bold",
+    "anchor": "middle",
+    "offset": 20
   }
-  
+}

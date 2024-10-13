@@ -4,8 +4,8 @@
   "data": {
     "url": "https://raw.githubusercontent.com/dlee0091/wk9_FIT3179_homework/refs/heads/main/data/wrangled_global_unemployment_data.csv"
   },
-  "width": 600,
-  "height": 300,
+  "width": 700,  
+  "height": 350, 
   "params": [
     {
       "name": "Year",

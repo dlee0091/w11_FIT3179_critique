@@ -29,3 +29,8 @@ vegaEmbed("#bubble_chart", vg_6).then(function(result) {
     // Access the Vega view instance for the grouped bar chart
 }).catch(console.error);
 
+
+var vg_7 = "js/malaysia_map.vg.json";  
+vegaEmbed("#malaysia_map", vg_7).then(function(result) {
+    // Access the Vega view instance for the grouped bar chart
+}).catch(console.error);

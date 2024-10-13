@@ -1,0 +1,89 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": "Unemployment Rate By State in 2024",
+  "width": 900,
+  "height": 500,
+  "projection": {
+    "type": "equirectangular"
+  },
+  "layer": [
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/malaysia_topojson.json",
+        "format": {"type": "topojson", "feature": "states"}
+      },
+      "transform": [
+        {
+          "calculate": "'Data is not available for the state: ' + datum.properties.Name",
+          "as": "note"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "fill": "#f0f0f0",
+        "stroke": "#444",
+        "strokeWidth": 1.5
+      },
+      "encoding": {
+        "tooltip": {"field": "note"}
+      }
+    },
+    {
+      "data": {
+        "url": "https://raw.githubusercontent.com/dlee0091/wk10_FIT3179_homework/refs/heads/main/data/normalised_name_2023_malaysia_lfs_qtr_state_updated.csv",
+        "format": {"type": "csv"}
+      },
+      "transform": [
+        {
+          "lookup": "state",
+          "from": {
+            "data": {
+              "url": "https://raw.githubusercontent.com/jnewbery/CartogramMalaysia/refs/heads/master/public/data/malaysia-states.topojson",
+              "format": {
+                "type": "topojson",
+                "feature": "states"
+              }
+            },
+            "key": "properties.Name"
+          },
+          "as": "geo"
+        }
+      ],
+      "mark": {
+        "type": "geoshape",
+        "stroke": "black",
+        "strokeWidth": 2
+      },
+      "encoding": {
+        "shape": {"field": "geo", "type": "geojson"},
+        "color": {
+          "title": "Unemployment Rate (%)",
+          "field": "u_rate",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 10],
+            "scheme": "blues"
+          },
+          "legend": {
+            "format": ".1f",
+            "orient": "bottom"
+          }
+        },
+        "tooltip": [
+          {
+            "field": "state",
+            "type": "nominal",
+            "title": "State"
+          },
+          {
+            "field": "u_rate",
+            "type": "quantitative",
+            "title": "Unemployment Rate (%)",
+            "format": ".1f"
+          }
+        ]
+      }
+    }
+  ],
+  "config": {}
+}

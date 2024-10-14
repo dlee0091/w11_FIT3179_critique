@@ -80,11 +80,12 @@
         "range": ["#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#F4A582", "#2D708E"]
       },
       "legend": {
+        "title": "Country Name", 
         "labelFontStyle": "san-serif",
         "titleFontStyle": "serif",
-        "orient": "right",
-        "offset": -120,
-        "labelOffset": 0
+        "orient": "top-right", 
+        "offset": 10,  
+        "labelOffset": 10  
       }
     },
     "opacity": {

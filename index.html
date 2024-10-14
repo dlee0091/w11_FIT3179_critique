@@ -2,14 +2,13 @@
 <html lang="en">
 
 <head>
-    <!-- Metadata Tags for Character Set, Viewport, and Compatibility -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- External Stylesheets -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@2.0.6/build/pure-min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css"> <!-- Linking external CSS -->
     
     <!-- JavaScript Libraries for Data Visualizations -->
@@ -19,90 +18,103 @@
     <script src="js/main.js"></script>
 
     <!-- Page Title for Browser Tab -->
-    <title>Global Unemployment Insights</title>
+    <title>Unemployment Insights</title>
 </head>
 
 <body>
-    <header class="header-box">
-        <!-- Title Centered -->
+    <!-- Header Section -->
+    <header class="header-box" style="background-color: #2c3e50; color: white; padding: 2rem;">
         <div class="header-content">
-            <div class="header-title">
-                <h1>Global Unemployment Insights</h1>
-                <p>Exploring global unemployment trends through interactive visualizations</p>
-            </div>
-
-            <!-- Centered Navigation Links Below Banner Text -->
-            <nav class="nav">
-                <ul>
-                    <li><a href="#mapVisualization">Global Overview</a></li>
-                    <li><a href="#bubblePlot">Regional Focus</a></li>
-                    <li><a href="#radialChart">Gender Disparities</a></li>
-                    <li><a href="#groupedBarChart">Demographic Breakdown</a></li>
-                    <li><a href="#malaysiaMap">Malaysia Insights</a></li>
-                </ul>
-            </nav>
+            <!-- Updated Title with Serif Font -->
+            <h1 class="header-title" style="font-size: 2.5rem; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
+                Unemployment Insights
+            </h1>
+            <p style="font-size: 1.2rem; color: #bdc3c7;">
+                Exploring global unemployment trends through interactive visualizations.
+            </p>
         </div>
+
+        <!-- Navigation Links -->
+        <nav class="nav" style="margin-top: 2rem;">
+            <ul style="display: flex; gap: 1.5rem; justify-content: center; list-style-type: none;">
+                <li><a href="#mapVisualization" style="color: #fff;">Global Overview</a></li>
+                <li><a href="#radialChart" style="color: #fff;">Gender Disparities</a></li>
+                <li><a href="#groupedBarChart" style="color: #fff;">Demographic Breakdown</a></li>
+                <li><a href="#bubblePlot" style="color: #fff;">Regional Focus</a></li>
+                <li><a href="#malaysiaMap" style="color: #fff;">Malaysia Insights</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <main class="main_section">
+    <!-- Main Section with Visualizations -->
+    <main class="main_section" style="background-color: #f0f4f8; padding: 2rem 0;">
+        
         <!-- Global Overview -->
-        <section id="mapVisualization">
-            <div class="visualization">
-                <h2>Unemployment Around the World</h2>
-                <p class="description">
-                    From the shadows of high unemployment rates in Sub-Saharan Africa to pockets of economic stability in Northern Europe, this map gives a global perspective. Did you know? Over 20 countries are struggling with unemployment rates above 10%. In contrast, some regions in Asia and Oceania are enjoying rates as low as 2%.
+        <section id="mapVisualization" class="visualization" style="margin-bottom: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; color: #2c3e50;">Unemployment Around the World</h2>
+                <p class="description" style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem; line-height: 1.6;">
+                    In South Africa, the unemployment rate has never fallen below <strong style="color: #e74c3c;">20%</strong> from <strong style="color: #9b59b6;">2014</strong> to <strong style="color: #9b59b6;">2024</strong>, reflecting persistent challenges in the labor market. 
+                    Meanwhile, Cambodia has consistently maintained an unemployment rate below <strong style="color: #27ae60;">1%</strong>, demonstrating relative stability throughout the same period.
                 </p>
-                <div id="map_chart" class="chart-container"></div>
             </div>
-        </section>
-
-        <!-- Regional Focus -->
-        <section id="bubblePlot">
-            <div class="visualization">
-                <h2>Regional Giants and Challenges</h2>
-                <p class="description">
-                    Explore the key regions where unemployment is disproportionately high. In Malaysia, W.P. Labuan and Sabah stand out with higher rates, while states like Putrajaya are faring much better. Compare the regions easily through this visual lens, with each bubble representing the weight of unemployment in different parts.
-                </p>
-                <div id="bubble_chart" class="chart-container"></div>
-            </div>
+            <div id="map_chart" class="chart-container"></div>
         </section>
 
         <!-- Gender Disparities -->
-        <section id="radialChart">
-            <div class="visualization">
-                <h2>Unemployment and Gender: A Global Divide</h2>
-                <p class="description">
-                    Across many countries, gender-based unemployment gaps reveal stark contrasts. For example, in several countries like Botswana and Eswatini, women experience significantly higher rates of unemployment compared to men. This comparison brings gender disparities into sharp focus, particularly in regions hit hardest.
+        <section id="radialChart" class="visualization" style="margin-bottom: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; color: #2c3e50;">Unemployment and Gender: A Global Divide</h2>
+                <p class="description" style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">
+                    Since <strong style="color: #9b59b6;">2022</strong>, Afghanistan's female unemployment rate has surged from <strong style="color: #e74c3c;">23.82%</strong> to <strong style="color: #e74c3c;">28.30%</strong> in <strong style="color: #9b59b6;">2024</strong>, placing it in the top 10 globally. For males, it was not in the top 10 in <strong style="color: #9b59b6;">2022</strong>, but by <strong style="color: #9b59b6;">2024</strong>, it reached <strong style="color: #e74c3c;">13.09%</strong>. Ongoing conflict and political instability have severely impacted the economy, reducing job opportunities and exacerbating unemployment.
                 </p>
-                <div id="radial_chart" class="chart-container"></div>
+                
+                
+                
             </div>
+            <div id="radial_chart" class="chart-container"></div>
         </section>
 
         <!-- Demographic Breakdown -->
-        <section id="groupedBarChart">
-            <div class="visualization">
-                <h2>Unemployment Rates by Age and Gender</h2>
-                <p class="description">
-                    A closer look at Malaysia shows stark differences in unemployment rates across gender and age groups. Youth aged 15-24 face unemployment rates as high as 16%, while the figures are significantly lower for older age groups. Discover how different demographic segments compare in the job market.
+        <section id="groupedBarChart" class="visualization" style="margin-bottom: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; color: #2c3e50;">Unemployment Rates by Age and Gender in Malaysia</h2>
+                <p class="description" style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">
+                    Since <strong style="color: #9b59b6;">2022</strong>, Afghanistan's female unemployment rose from <strong style="color: #e74c3c;">23.82%</strong> to <strong style="color: #e74c3c;">28.30%</strong> in <strong style="color: #9b59b6;">2024</strong>. Male unemployment, not in the top 10 in <strong style="color: #9b59b6;">2022</strong>, reached <strong style="color: #e74c3c;">13.09%</strong> by <strong style="color: #9b59b6;">2024</strong>. Conflict and instability have worsened job prospects across the country.
                 </p>
-                <div id="grouped_bar_chart" class="chart-container"></div>
             </div>
+            <div id="grouped_bar_chart" class="chart-container"></div>
+        </section>
+
+        <!-- Regional Focus -->
+        <section id="bubblePlot" class="visualization" style="margin-bottom: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; color: #2c3e50;">Regional Giants and Challenges</h2>
+                <p class="description" style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">
+                    Sabah has the highest average labor force at <strong style="color: #3498db;">2,231.1</strong>, yet it also records the highest unemployment rate at <strong style="color: #e74c3c;">7.9%</strong>.
+                </p>
+            </div>
+            <div id="bubble_chart" class="chart-container"></div>
         </section>
 
         <!-- Malaysia Insights -->
-        <section id="malaysiaMap">
-            <div class="visualization">
-                <h2>Malaysia's Employment Landscape</h2>
-                <p class="description">
-                    In Malaysia, Sabah leads with the highest unemployment rate at 7.9% in early 2024. This map highlights which states are thriving and which are struggling.
+        <section id="malaysiaMap" class="visualization" style="margin-bottom: 3rem;">
+            <div style="text-align: center;">
+                <h2 style="font-size: 2rem; color: #2c3e50;">Malaysia's Employment Landscape</h2>
+                <p class="description" style="max-width: 800px; margin: 1rem auto; font-size: 1.1rem;">
+                    Sabah has with the highest unemployment rate at <strong style="color: #e74c3c;">7.9%</strong>, while Kedah has the lowest at <strong style="color: #27ae60;">1.9%</strong>.
                 </p>
-                <div id="malaysia_map" class="chart-container"></div>
             </div>
+            <div id="malaysia_map" class="chart-container"></div>
         </section>
     </main>
 
-    <footer>
-        <p><b>Visualization by Dominic, dataset source <a href="https://data.gov.my/data-catalogue/lfs_qtr_state" target="_blank">data.gov.my</a></b> | Global Unemployment Dashboard | 2024 | Explore more data on <a href="https://ourworldindata.org/grapher/unemployment-rate?tab=table#explore-the-data" target="_blank">Our World in Data | 14/10/2024</a></p>
+    <!-- Footer -->
+    <footer style="background-color: #146c9c; color: white; padding: 2rem 0; text-align: center;">
+        <p><b>Unemployment Dashboard | 2024</b></p>
+        <p>Visualizations by Dominic | Data sourced from <u><a href="https://data.gov.my/data-catalogue/lfs_qtr_state" target="_blank" style="color: #fff;">data.gov.my</a></u></p>
+        <p>Explore more data on <u><a href="https://ourworldindata.org/grapher/unemployment-rate?tab=table#explore-the-data" target="_blank" style="color: #fff;">Our World in Data</a></u></p>
+        <p>Last updated: 14/10/2024</p>
     </footer>
 </body>
 

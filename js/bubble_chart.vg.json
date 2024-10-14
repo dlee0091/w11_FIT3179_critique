@@ -2,9 +2,8 @@
   "$schema": "https://vega.github.io/schema/vega/v5.json",
   "width": 800,
   "height": 800,
-  "background": "#f8f9fa",
-  "padding": {"left": 5, "right": 5, "top": 20, "bottom": 0},
-  "autosize": "none",
+  "padding": {"left": 5, "right": 5, "top": 50, "bottom": 5},
+  "autosize": "pad",
   "signals": [
     {"name": "cx", "update": "width / 2"},
     {"name": "cy", "update": "height / 2"},
@@ -21,7 +20,7 @@
     {
       "name": "importanceThreshold",
       "value": 5,
-      "bind": {"input": "range", "min": 0, "max": 10, "step": 0.5}
+      "bind": {"input": "range", "min": 0, "max": 8, "step": 0.5, "name": "Unemployment Rate Threshold (%)"}
     },
     {
       "name": "restart",
@@ -37,7 +36,7 @@
         {
           "type": "formula",
           "as": "isImportant",
-          "expr": "datum.u_rate > importanceThreshold"
+          "expr": "datum.u_rate > importanceThreshold ? 'Pass Threshold' : 'Below Threshold'"
         }
       ]
     }
@@ -51,7 +50,7 @@
     {
       "name": "color",
       "type": "ordinal",
-      "domain": [true, false],
+      "domain": ["Pass Threshold", "Below Threshold"],
       "range": ["#e41a1c", "#377eb8"]
     }
   ],
@@ -71,7 +70,7 @@
           "stroke": {"value": "white"},
           "strokeWidth": {"value": 1},
           "tooltip": {
-            "signal": "{'State': datum.state, 'Labor Force': datum.lf, 'Employed': datum.lf_employed, 'Unemployed': datum.lf_unemployed, 'Unemployment Rate (%)': format(datum.u_rate, '.2f'), 'Above Threshold': datum.isImportant ? 'Yes' : 'No'}"
+            "signal": "{'State': datum.state, 'Labor Force': datum.lf, 'Employed': datum.lf_employed, 'Unemployed': datum.lf_unemployed, 'Unemployment Rate (%)': format(datum.u_rate, '.2f'), 'Above Threshold': datum.isImportant}"
           }
         },
         "hover": {
@@ -122,8 +121,8 @@
   "legends": [
     {
       "fill": "color",
-      "title": "States with Unemployment Rate Above Threshold (%)",
-      "orient": "top-left",
+      "title": "Threshold (%)",
+      "orient": "top",
       "labelFontSize": 14,
       "symbolSize": 150,
       "titleFontSize": 16,
